@@ -1,0 +1,12 @@
+<nav class="navbar navbar-light" style="background-color:lightgreen">
+    <a href="{% url 'mainpage:index' %}" class="navbar-brand mb-0 h1">Главная</a>
+    <ul class="navbar-nav ml-auto pr-2">
+        <li class="nav-item">
+            <a href="{% url 'recipes:index' %}" class="nav-link">Рецепты</a>
+        </li>
+    </ul>
+    <form class="form-inline" method="GET" action="{% url 'search:index' %}">
+        <input class="form-control mr-sm-2" name="search_box" type="search" placeholder="Рецепт" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Найти</button>
+    </form>
+</nav>

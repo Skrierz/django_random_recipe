@@ -1,0 +1,41 @@
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    {% if dishes.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="{% url 'recipes:page' 1 %}">First</a>
+      </li>
+      {% if dishes.previous_page_number != 1 %}
+        <li class="page-item">
+          <a class="page-link" href="{% url 'recipes:page' dishes.previous_page_number %}">Previous</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="{% url 'recipes:page' page|add:'-2' %}">{{ page|add:'-2' }}</a>
+        </li>
+      {% endif %}
+        <li class="page-item">
+          <a class="page-link" href="{% url 'recipes:page' page|add:'-1' %}">{{ page|add:'-1' }}</a>
+        </li>
+    {% endif %}
+
+    <li class="page-item active">
+      <p class="page-link">{{ page }}</p>
+    </li>
+
+    {% if dishes.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="{% url 'recipes:page' page|add:'1' %}">{{ page|add:'1' }}</a>
+      </li>
+      {% if dishes.next_page_number != last_page %}
+        <li class="page-item">
+          <a class="page-link" href="{% url 'recipes:page' page|add:'2' %}">{{ page|add:'2' }}</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="{% url 'recipes:page' dishes.next_page_number %}">Next</a>
+        </li>
+      {% endif %}
+      <li class="page-item">
+        <a class="page-link" href="{% url 'recipes:page' last_page %}">Last</a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>

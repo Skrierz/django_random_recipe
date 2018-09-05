@@ -1,0 +1,11 @@
+{% extends 'maintemplates/header.html' %}
+{% block content %}
+    <div class="container col-3">
+        <span>
+            {% for dish in dishes %}
+                <p class="text-left"><a href="{% url 'recipe:dish' dish.pk %}">{{ dish.name }}</a></p>
+            {% endfor %}
+        </span>
+    </div>
+    {% include 'recipes/pagination.html' %}
+{% endblock %}

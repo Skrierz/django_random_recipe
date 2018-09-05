@@ -1,0 +1,31 @@
+{% extends 'maintemplates/header.html' %}
+{% block content %}
+    <div class="container pt-5 pb-5">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <form action="#" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-primary btn-lg active"  type="submit">Рандомный рецепт</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% if dish %}
+        <div class="container">
+            <div class="row justify-content-center"><h1><a href="{{ dish.url }}">{{ dish.name }}</a></h1></div>
+            <div class="row justify-content-center"><h5>{{ dish.standart_portions }} порций</h5></div>
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    {% for ingredientdish in dish.ingredientdish_set.all %}
+                        <p>{{ ingredientdish.ingredient.name }} - {{ ingredientdish.amount }} {{ ingredientdish.ingredient.unit_of_mass }}</p>
+                    {% endfor %}
+                </div>
+                <div class="col-6">
+                    {% for action in dish.recipe_set.all %}
+                        <p>{{ action.step }}.  {{ action.action }}</p>
+                    {% endfor %}                
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

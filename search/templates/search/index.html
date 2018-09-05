@@ -1,0 +1,10 @@
+{% extends 'maintemplates/header.html' %}
+{% block content %}
+    <div class="container col-3">
+        <span>
+            {% for object in search_result %}
+                <p><a href="{% url 'recipe:dish' object.pk %}">{{ object.name }}</a></p>
+            {% endfor %}
+        </span>
+    </div>
+{% endblock %}
