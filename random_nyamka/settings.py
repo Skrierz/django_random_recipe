@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'search',
     'mainpage',
-    'testovaya',
     'recipes',
     'recipe',
     'django.contrib.admin',
